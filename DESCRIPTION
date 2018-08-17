@@ -1,10 +1,10 @@
 Package: AdmSim
 Type: Package
 Title: Simulation for Genetic Admixture
-Version: 1.1.2
+Version: 1.2
 Date: 2018-08-4
 Author: Gaetano Romano
 Maintainer: Gaetano Romano <gaetano.romano@ucdconnect.ie>
-Description: Maybe not
-License: mmmmph...
+Description: A package to perform simulations of admixture events
+License: GNU Licence version 3.0
 Depends: methods, parallel

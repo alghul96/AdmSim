@@ -1,17 +1,14 @@
-
-# Monte Carlo simulation of 2 populations
+### MCPOPSIM ###
 MCPopSim = setClass(
   "MCPopSim",
   slots = c(posteriorDosages = "list",
             nSims = "numeric")
 )
 
-
-# Method for making a Monte Carlo Population simulation
-
 setGeneric(
   name = "MCSim",
-  def = function(popList, nGens, nSims = 99, resolution = 100, mc.cores = 4) {
+  def = function(popList, nGens, nSims = 99,
+                 resolution = 100, mc.cores = 4) {
     standardGeneric("MCSim")
   }
 )
@@ -19,7 +16,8 @@ setGeneric(
 setMethod(
   f = "MCSim",
   signature = c("list", "numeric"),
-  definition = function(popList, nGens, nSims = 99, resolution = 100, mc.cores = 4){
+  definition = function(popList, nGens, nSims = 99,
+                        resolution = 100, mc.cores = 4){
 
     # Obtaining the populations genomes
     for (pop in popList) {
@@ -65,8 +63,10 @@ setMethod(
 
     # obtaining the number of individuals for pop. at every locus
     freqs = lapply(simuList, GetGeneFreq, resolution = resolution)
-    chrom1Nindivid = lapply(freqs, function(f) f@chromosome1 * f@nIndividuals)
-    chrom2Nindivid = lapply(freqs, function(f) f@chromosome2 * f@nIndividuals)
+    chrom1Nindivid = lapply(freqs, function(f)
+      f@chromosome1 * f@nIndividuals)
+    chrom2Nindivid = lapply(freqs, function(f)
+      f@chromosome2 * f@nIndividuals)
 
     popNames = unique(unlist(lapply(chrom1Nindivid, rownames)))
 
@@ -75,8 +75,10 @@ setMethod(
     output = list()
     for (popName in popNames) {
 
-      popZChrom1 = rowMeans(sapply(1:nSims, function(i) chrom1Nindivid[[i]][popName,]))
-      popZChrom2 = rowMeans(sapply(1:nSims, function(i) chrom1Nindivid[[i]][popName,]))
+      popZChrom1 = rowMeans(sapply(1:nSims, function(i)
+        chrom1Nindivid[[i]][popName,]))
+      popZChrom2 = rowMeans(sapply(1:nSims, function(i)
+        chrom1Nindivid[[i]][popName,]))
 
       # getting the beta and alpha parameters of the prior
       mu = popSizes[, popNames] / nChild
@@ -134,13 +136,15 @@ setMethod(
          panel.first = grid(),
          lwd = 2)
 
-    # applying
     p = 1
     for (mcpopSim in popSim@posteriorDosages) {
       power = 1 - (alpha / 2)
-      maxFreq = apply(mcpopSim, 1, function(x) qbeta(power, x["alpha"], x["beta"])) * 2
-      minFreq = apply(mcpopSim, 1, function(x) qbeta(1 - power, x["alpha"], x["beta"])) * 2
-      polygon(c(rev(1:resolution), 1:resolution), c(rev(minFreq), maxFreq), col = adjustcolor(p, alpha.f = .1), border = NA)
+      maxFreq = apply(mcpopSim, 1, function(x)
+        qbeta(power, x["alpha"], x["beta"])) * 2
+      minFreq = apply(mcpopSim, 1, function(x)
+        qbeta(1 - power, x["alpha"], x["beta"])) * 2
+      polygon(c(rev(1:resolution), 1:resolution), c(rev(minFreq), maxFreq),
+              col = adjustcolor(p, alpha.f = .1), border = NA)
       p = p + 1
     }
 

@@ -3,7 +3,6 @@ exportMethods(
     "as.char.chromosome",
     "as.char.geneSeq",
     "as.vector.Chromosome",
-    "AveragePairwiseDistances",
     "checkGenotype",
     "compactChromosome",
     "ComputeViability",
@@ -30,5 +29,5 @@ exportClasses(
      "MCPopSim",
      "Population",
      "geneSite",
-     "Chromosome" 
+     "Chromosome"
 )
