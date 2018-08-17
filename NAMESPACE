@@ -1,0 +1,34 @@
+exportPattern("^[[:alpha:]]+")
+exportMethods(
+    "as.char.chromosome",
+    "as.char.geneSeq",
+    "as.vector.Chromosome",
+    "AveragePairwiseDistances",
+    "checkGenotype",
+    "compactChromosome",
+    "ComputeViability",
+    "DoCrossover",
+    "GetAlleleFreq",
+    "GetGeneFreq",
+    "MateIndividuals",
+    "MCSim",
+    "plot.GeneFreq",
+    "plot.Individual",
+    "plot.MCPopSim",
+    "plot.Population",
+    "SelectIndividuals",
+    "show",
+    "splitChromosome",
+    "splitChromosomeAlleles"
+)
+exportClasses(
+    "GeneFreq",
+     "Allele",
+     "geneSeq",
+     "listOrNULL",
+     "Individual",
+     "MCPopSim",
+     "Population",
+     "geneSite",
+     "Chromosome" 
+)

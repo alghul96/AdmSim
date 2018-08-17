@@ -1,0 +1,10 @@
+Package: AdmSim
+Type: Package
+Title: Simulation for Genetic Admixture
+Version: 1.1.2
+Date: 2018-08-4
+Author: Gaetano Romano
+Maintainer: Gaetano Romano <gaetano.romano@ucdconnect.ie>
+Description: Maybe not
+License: mmmmph...
+Depends: methods, parallel
